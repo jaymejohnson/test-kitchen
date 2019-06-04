@@ -4,6 +4,6 @@ core: 8.x
 description: "Foundation 6 theme TO BE RENAMED"
 
 libraries:
-  - scaffold/global
+  - test-kitchen/global
 ckeditor_stylesheets:
   - dist/css/wysiwyg.css

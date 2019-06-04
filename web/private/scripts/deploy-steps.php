@@ -22,7 +22,7 @@ passthru('drush updatedb -y --entity-updates');
  *
  * This step is recommended for all workflows (uncomment it).
  */
-// passthru('drush config-import -y');
+ passthru('drush config-import -y');
 
 /**
  * Enable the scaffold theme and set it as the default.
@@ -30,5 +30,5 @@ passthru('drush updatedb -y --entity-updates');
  * We do NOT recommend this step for your site. It is only here for automated
  * testing on the scaffold project itself.  Remove this step.
  */
-passthru('drush en -y scaffold && drush config-set -y system.theme default scaffold');
+//passthru('drush en -y scaffold && drush config-set -y system.theme default scaffold');
 

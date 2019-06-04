@@ -1,11 +1,11 @@
 {
-  "name": "lastcall/drupal-scaffold",
-  "description": "Scaffolding for an enterprise scale Drupal build",
+  "name": "jaymejohnson/test-kitchen",
+  "description": "A Drupal 8 test kitchen",
   "license": "GPL-2.0+",
   "authors": [
     {
-      "name": "Rob Bayliss",
-      "email": "rob@lastcallmedia.com"
+      "name": "jayme johnson",
+      "email": "jayme.c.johnson@gmail.com"
     }
   ],
   "repositories": [

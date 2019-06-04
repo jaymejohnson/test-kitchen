@@ -20,15 +20,15 @@ $drupalExtension = new DrupalExtension([
 $config = MannequinConfig::create()
   ->addExtension($drupalExtension)
   ->setGlobalCss([
-    'web/themes/custom/scaffold/dist/css/style.css',
+    'web/themes/custom/test-kitchen/dist/css/style.css',
   ])
   ->setGlobalJs([
     'web/core/assets/vendor/jquery/jquery.min.js',
     'web/core/assets/vendor/domready/ready.min.js',
     'web/core/misc/drupal.js',
     'web/core/misc/drupal.init.js',
-    'web/themes/custom/scaffold/dist/js/libs.min.js',
-    'web/themes/custom/scaffold/dist/js/theme.min.js',
+    'web/themes/custom/test-kitchen/dist/js/libs.min.js',
+    'web/themes/custom/test-kitchen/dist/js/theme.min.js',
   ]);
 
 return $config;
