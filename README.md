@@ -21,7 +21,7 @@ Before you begin, you must have Docker and Docker Compose installed on your loca
     yarn install
     ```
 6. Run `composer site:import` to pull down and import a copy of the site's database. 
-(This step won't work until I can set up an artifact build that pushes to Pantheon. Since multi-dev is now only for agencies
-this is not currently possible for me to do.)
+(This step won't work until this project is set up with a continuous integration artifact build that pushes to Pantheon via Circle CI. 
+Setting up CI with Pantheon requires multi-dev functionality, which is now only available to agencies.
 
 See the documentation(/docs) for more information on how to use the tools and how to use this project. For more information on the Docker stack, see the [Docker documenation](/docs/tools/docker.md).
