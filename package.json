@@ -6,10 +6,12 @@
   "private": true,
   "main": "gulpfile.js",
   "dependencies": {
+    "diff": "^3.5.0",
     "eslint": "^4.12.1",
     "foundation-sites": "^6.4.3",
     "gulp": "^3.9.1",
     "gulp-help": "^1.6.1",
+    "is-my-json-valid": "^2.20.0",
     "js-yaml": "^3.13.1",
     "lastcall-artifact.sh": "^0.2.2",
     "lastcall-gulp-drupal-tasks": "^2.0.0",
