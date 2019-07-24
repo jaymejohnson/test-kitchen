@@ -20,11 +20,9 @@
     "lastcall-artifact.sh": "^0.2.2",
     "lastcall-gulp-drupal-tasks": "^2.0.0",
     "lastcall-scaffold-webdriver": "file:wd",
-    "lodash": "^4.17.13",
-    "lodash.mergewith": "^4.6.2",
-    "lodash.template": "^4.5.0",
+    "lodash": "4.17.13",
     "mem": "^5.1.1",
-    "minimatch": "^3.0.2",
+    "minimatch": "3.0.2",
     "tunnel-agent": "^0.6.0",
     "yargs": "^13.3.0"
   },
