@@ -6,17 +6,28 @@
   "private": true,
   "main": "gulpfile.js",
   "dependencies": {
-    "diff": "^3.5.0",
-    "eslint": "^4.12.1",
-    "foundation-sites": "^6.4.3",
-    "gulp": "^3.9.1",
+    "atob": "^2.1.0",
+    "cryptiles": "^4.1.2",
+    "debug": "^4.1.1",
+    "diff": "^4.0.1",
+    "eslint": "^6.1.0",
+    "foundation-sites": "^6.5.3",
+    "growl": "^1.10.0",
+    "gulp": "^4.0.2",
     "gulp-help": "^1.6.1",
     "is-my-json-valid": "^2.20.0",
+    "jquery": "^3.4.1",
     "js-yaml": "^3.13.1",
     "lastcall-artifact.sh": "^0.2.2",
     "lastcall-gulp-drupal-tasks": "^2.0.0",
     "lastcall-scaffold-webdriver": "file:wd",
-    "yargs": "^9.0"
+    "lodash": "^4.17.13",
+    "lodash.template": "^4.5.0",
+    "mem": "^5.1.1",
+    "minimatch": "^3.0.2",
+    "tunnel-agent": "^0.6.0",
+    "what-input": "^5.2.3",
+    "yargs": "^13.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
