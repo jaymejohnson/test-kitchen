@@ -16,6 +16,10 @@
     "lastcall-artifact.sh": "^0.2.2",
     "lastcall-gulp-drupal-tasks": "^2.0.0",
     "lastcall-scaffold-webdriver": "file:wd",
+    "lodash": "^4.17.13",
+    "lodash.mergewith": "^4.6.2",
+    "lodash.template": "^4.5.0",
+    "mem": "^4.0.0",
     "yargs": "^9.0"
   },
   "scripts": {
