@@ -32,13 +32,12 @@
                 {% if type.tour %}
                   {{ type.tour }}
                 {% endif %}
-                {% if type.help_link %}
-                  <a href="{{ type.help_link }}" class="ct-help ct-details-link">View help article</a>
+                {% if type.node_type_help_links.help_link_1_title and type.node_type_help_links.help_link_1_url %}
+                  <a href="{{ type.node_type_help_links.help_link_1_url }}" class="ct-help ct-details-link">{{ type.node_type_help_links.help_link_1_title }}</a>
                 {% endif %}
-                {% if type.live_example %}
-                  <a href="{{ type.live_example }}" class="ct-details-link live-example">View live example</a>
+                {% if type.node_type_help_links.help_link_2_title and type.node_type_help_links.help_link_2_url %}
+                  <a href="{{ type.node_type_help_links.help_link_2_url }}" class="ct-help ct-details-link">{{ type.node_type_help_links.help_link_2_title }}</a>
                 {% endif %}
-
               </div>
             {% endif %}
 

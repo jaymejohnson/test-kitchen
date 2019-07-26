@@ -44,4 +44,5 @@ class AddContentSearch extends BlockBase {
     ];
   }
 
+  // TODO Invalidate block caching.
 }

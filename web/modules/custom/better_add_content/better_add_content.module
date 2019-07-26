@@ -120,8 +120,10 @@ function better_add_content_form_node_type_form_alter(&$form, FormStateInterface
   $node_type = $node_type_form->getEntity();
 
   $long_description_config = $node_type->getThirdPartySetting('better_add_content', 'node_type_long_description', NULL);
-  $live_example_config = $node_type->getThirdPartySetting('better_add_content', 'node_type_live_example', NULL);
-  $help_link_config = $node_type->getThirdPartySetting('better_add_content', 'node_type_help_link', NULL);
+  $help_link_1_title_config = $node_type->getThirdPartySetting('better_add_content', 'help_link_1_title', NULL);
+  $help_link_1_url_config = $node_type->getThirdPartySetting('better_add_content', 'help_link_1_url', NULL);
+  $help_link_2_title_config = $node_type->getThirdPartySetting('better_add_content', 'help_link_2_title', NULL);
+  $help_link_2_url_config = $node_type->getThirdPartySetting('better_add_content', 'help_link_2_url', NULL);
   $thumbnail_config = $node_type->getThirdPartySetting('better_add_content', 'node_type_thumbnail', NULL);
 
   $form['description']['#weight'] = 0;
@@ -130,45 +132,76 @@ function better_add_content_form_node_type_form_alter(&$form, FormStateInterface
     '#type' => 'textarea',
     '#title' => t('Key Components'),
     '#default_value' => $long_description_config,
+    '#description' => t('Use this optional field to bullet point the key components of the content type, or to provide other supplemental descriptive text.'),
     '#weight' => 0,
 
   ];
 
-  $form['node_type_live_example'] = [
-    '#type' => 'textfield',
-    '#title' => t('Link to live example'),
-    '#description' => t('Enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page.',
-      [
-        '%front' => '<front>',
-        '%add-node' => '/node/add',
-        '%url' => 'https://example.com',
-      ]),
-    '#default_value' => $live_example_config,
-    '#element_validate' => ['_better_add_content_url_validation'],
-    '#maxlength' => 255,
+  $form['node_type_help_links'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Help links'),
     '#weight' => 0,
+    '#description' => t('Use help links for sharing things like live examples, help articles, or a tour.'),
+  ];
+
+  $form['node_type_help_links']['help_link_1_title'] = [
+    '#type' => 'textfield',
+    '#title' => 'Link title',
+    '#description' => t('Enter the title or text of the link, i.e. what you want the linked text to say.'),
+    '#default_value' => $help_link_1_title_config,
+    '#weight' => 0,
+    '#maxlength' => 255,
     '#size' => 30,
   ];
 
-  $form['node_type_help_link'] = [
+  $form['node_type_help_links']['help_link_1_url'] = [
     '#type' => 'textfield',
-    '#title' => t('Link to help article'),
+    '#title' => t('Link URL'),
     '#description' => t('Enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page.',
       [
         '%front' => '<front>',
         '%add-node' => '/node/add',
         '%url' => 'http://example.com',
       ]),
-    '#default_value' => $help_link_config,
+    '#default_value' => $help_link_1_url_config,
     '#element_validate' => ['_better_add_content_url_validation'],
+    '#weight' => 0,
+    '#maxlength' => 255,
+    '#size' => 30,
+    '#suffix' => '<hr>',
+  ];
+  $form['node_type_help_links']['help_link_2_title'] = [
+    '#type' => 'textfield',
+    '#title' => 'Link title',
+    '#description' => t('Enter the title or text of the link, i.e. what you want the linked text to say.'),
+    '#default_value' => $help_link_2_title_config,
     '#weight' => 0,
     '#maxlength' => 255,
     '#size' => 30,
   ];
 
+  $form['node_type_help_links']['help_link_2_url'] = [
+    '#type' => 'textfield',
+    '#title' => t('URL'),
+    '#description' => t('Enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page.',
+      [
+        '%front' => '<front>',
+        '%add-node' => '/node/add',
+        '%url' => 'https://example.com',
+      ]),
+    '#default_value' => $help_link_2_url_config,
+    '#element_validate' => ['_better_add_content_url_validation'],
+    '#maxlength' => 255,
+    '#weight' => 0,
+    '#size' => 30,
+  ];
+
+
+
   $form['node_type_thumbnail'] = [
     '#type' => 'managed_file',
     '#title' => t('Thumbnail'),
+    '#description' => t('Upload a screenshot or image that provides an example of what content of this type looks like.'),
     '#upload_validators' => [
       'file_validate_is_image'      => [],
       'file_validate_extensions' => ['gif png jpg jpeg'],
@@ -183,17 +216,18 @@ function better_add_content_form_node_type_form_alter(&$form, FormStateInterface
   ];
 
   $form['#entity_builders'][] = '_better_add_content_node_type_form_builder';
-
 }
 
 /**
  * Entity form builder for the node type edit form.
  */
 function _better_add_content_node_type_form_builder($entity_type, NodeType $node_type, &$form, FormStateInterface $form_state) {
-
   $node_type->setThirdPartySetting('better_add_content', 'node_type_long_description', $form_state->getValue('node_type_long_description'));
-  $node_type->setThirdPartySetting('better_add_content', 'node_type_live_example', $form_state->getValue('node_type_live_example'));
-  $node_type->setThirdPartySetting('better_add_content', 'node_type_help_link', $form_state->getValue('node_type_help_link'));
+  $node_type->setThirdPartySetting('better_add_content', 'help_link_1_title', $form_state->getValue('help_link_1_title'));
+  $node_type->setThirdPartySetting('better_add_content', 'help_link_1_url', $form_state->getValue('help_link_1_url'));
+  $node_type->setThirdPartySetting('better_add_content', 'help_link_2_title', $form_state->getValue('help_link_2_title'));
+  $node_type->setThirdPartySetting('better_add_content', 'help_link_2_url', $form_state->getValue('help_link_2_url'));
+
   if ($form_state->getValue('node_type_thumbnail')) {
     $node_type->setThirdPartySetting('better_add_content', 'node_type_thumbnail', $form_state->getValue('node_type_thumbnail'));
   }
@@ -247,12 +281,11 @@ function better_add_content_preprocess_node_add_list(&$variables) {
         ];
       }
 
-      // Todo: make example and help links with render arrays.
-      // Live Example.
-      $variables['types'][$type->id()]['live_example'] = UrlHelper::filterBadProtocol($type->getThirdPartySetting('better_add_content', 'node_type_live_example'));
-
-      // Help Link.
-      $variables['types'][$type->id()]['help_link'] = UrlHelper::filterBadProtocol($type->getThirdPartySetting('better_add_content', 'node_type_help_link'));
+      // Help Links.
+      $variables['types'][$type->id()]['node_type_help_links']['help_link_1_title'] = $type->getThirdPartySetting('better_add_content', 'help_link_1_title');
+      $variables['types'][$type->id()]['node_type_help_links']['help_link_1_url'] = UrlHelper::filterBadProtocol($type->getThirdPartySetting('better_add_content', 'help_link_1_url'));
+      $variables['types'][$type->id()]['node_type_help_links']['help_link_2_title'] = $type->getThirdPartySetting('better_add_content', 'help_link_2_title');
+      $variables['types'][$type->id()]['node_type_help_links']['help_link_2_url'] = UrlHelper::filterBadProtocol($type->getThirdPartySetting('better_add_content', 'help_link_2_url'));
 
       // Thumbnail image.
       $thumb_fid = $type->getThirdPartySetting('better_add_content', 'node_type_thumbnail');
@@ -269,22 +302,6 @@ function better_add_content_preprocess_node_add_list(&$variables) {
         }
       }
 
-      // Optional Tour Link (depends on FR Tour module.)
-      $tour_config = $type->getThirdPartySetting('first_run_tours', $type_id);
-      if (($tour_config === 1)) {
-        $option = [
-          'query' => ['tour' => 1],
-        ];
-        $variables['types'][$type->id()]['tour'] = [
-          '#type' => 'link',
-          '#title' => t('Start with a tour'),
-          '#url' => Url::fromRoute('node.add', ['node_type' => $type_id], $option),
-          '#attributes' => [
-            'class' => ['ct-details-link ct-tour'],
-          ],
-        ];
-
-      }
 
       // Type Category. (from Content Type Categories submodule).
       $moduleHandler = \Drupal::service('module_handler');
